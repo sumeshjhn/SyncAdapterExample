@@ -1,16 +1,28 @@
-package com.bohn.boomesh.syncadapterex;
+package com.bohn.boomesh.syncadapterex.activities;
 
+import android.accounts.Account;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.bohn.boomesh.syncadapterex.R;
+import com.bohn.boomesh.syncadapterex.account.AccountUtils;
+
 public class MainActivity extends AppCompatActivity {
 
+    private Account mAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+        mAccount = AccountUtils.createSyncAccount(this);
     }
 
     @Override
